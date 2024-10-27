@@ -42,8 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'sanctum', 
-            'provider' => 'users',
+        'driver' => 'sanctum', // Make sure this is set to 'sanctum'
+        'provider' => 'users',
         ],
     ],
 

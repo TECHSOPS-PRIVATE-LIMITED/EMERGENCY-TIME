@@ -146,7 +146,7 @@ class AuthController extends Controller
     }
 
     $user = Auth::user(); // Get the authenticated user
-    $token = $user->createToken('authToken')->plainTextToken; // Create token
+    $token = $user->('authToken')->plainTextToken; // Create token
 
     return response()->json([
         'message' => 'Login successful',

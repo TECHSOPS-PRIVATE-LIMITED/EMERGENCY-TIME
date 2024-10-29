@@ -131,29 +131,29 @@ class AuthController extends Controller
       }
   
       public function loginApi(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()], 422);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(['message' => 'Invalid login credentials'], 401);
+        }
+
+                $user = Auth::user();
+                $token = $user->createToken('token-name');
+
+        return response()->json([
+            'message' => 'Login successful',
+            'user' => $user,
+            'token' => $token
+        ], 200);
     }
-
-    if (!Auth::attempt($request->only('email', 'password'))) {
-        return response()->json(['message' => 'Invalid login credentials'], 401);
-    }
-
-    $user = Auth::user(); // Get the authenticated user
-    $token = $user->createToken('authToken')->plainTextToken; // Create token
-
-    return response()->json([
-        'message' => 'Login successful',
-        'user' => $user,
-        'token' => $token
-    ], 200);
-}
 
 
 }

@@ -20,48 +20,14 @@
     <!-- Style Css -->
     <link href="{{ asset('admin/assets/css/styles.min.css') }}" rel="stylesheet">
 
-    <!-- Font Awesome (for social media icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <style>
-        /* Ensure the logo fits well on mobile screens */
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .logo-container img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 0.875em; /* Slightly smaller font size for errors */
-        }
-
-        @media (max-width: 767.98px) {
-            .logo-container {
-                padding: 10px; /* Reduce padding on smaller screens */
-            }
-
-            .login {
-                padding: 20px; /* Add some padding for better spacing */
-            }
-        }
-    </style>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- The logo half -->
-            <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center bg-white">
-                <div class="logo-container">
-                    <img src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="Logo" class="img-fluid">
-                </div>
+            <div class="col-md-6 d-none d-md-flex bg-primary-transparent-3 justify-content-center align-items-center">
+                <img src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="Logo" class="img-fluid">
             </div>
             <!-- The form half -->
             <div class="col-md-6 bg-white py-4">
@@ -79,35 +45,16 @@
                                             <div class="form-group mb-3">
                                                 <label class="form-label">Email</label>
                                                 <input class="form-control" name="email" placeholder="Enter your email" type="email" required>
-                                                @error('email')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label class="form-label">Password</label>
                                                 <input class="form-control" name="password" placeholder="Enter your password" type="password" required>
-                                                @error('password')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
                                             </div>
 
                                             <button type="submit" class="btn btn-primary btn-block w-100">Sign In</button>
 
-                                            <div class="row mt-3">
-                                                <div class="col-sm-6">
-                                                    <button class="btn btn-block w-100 btn-facebook">
-                                                        <i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
-                                                    </button>
-                                                </div>
-                                                <div class="col-sm-6 mt-2 mt-sm-0">
-                                                    <button class="btn btn-block w-100 btn-google" style="background-color: #db4437; color: white;">
-                                                        <i class="fab fa-google me-2"></i> Sign in with Google
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="main-signin-footer mt-4">
+                                            <div class="main-signin-footer mt-5">
                                                 <p class="mb-1"><a href="{{ route('password.request')}}">Forgot password?</a></p>
                                                 <p>Don't have an account? <a href="{{ route('register.show') }}">Create an Account</a></p>
                                             </div>

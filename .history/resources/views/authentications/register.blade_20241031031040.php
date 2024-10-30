@@ -125,7 +125,8 @@
                                             </div>
 
                                             <div class="main-signin-footer mt-4">
-                                                <p>Already have an account? <a href="{{ route('login.show') }}">Sign In</a></p>
+                                                <p class="mb-1"><a href="{{ route('password.request')}}">Forgot password?</a></p>
+                                                <p>Don't have an account? <a href="{{ route('register.show') }}">Create an Account</a></p>
                                             </div>
                                         </form>
                                     </div>

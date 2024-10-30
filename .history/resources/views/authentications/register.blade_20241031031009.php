@@ -109,23 +109,24 @@
                                             </div>
                                             
 
-                                            <button type="submit" class="btn btn-primary btn-block w-100">Register</button>
+                                            <button type="submit" class="btn btn-primary btn-block w-100">Sign In</button>
 
                                             <div class="row mt-3">
                                                 <div class="col-sm-6">
                                                     <button class="btn btn-block w-100 btn-facebook">
-                                                        <i class="fab fa-facebook-f me-2"></i> Register with Facebook
+                                                        <i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
                                                     </button>
                                                 </div>
                                                 <div class="col-sm-6 mt-2 mt-sm-0">
                                                     <button class="btn btn-block w-100 btn-google" style="background-color: #db4437; color: white;">
-                                                        <i class="fab fa-google me-2"></i> Register with Google
+                                                        <i class="fab fa-google me-2"></i> Sign in with Google
                                                     </button>
                                                 </div>
                                             </div>
 
                                             <div class="main-signin-footer mt-4">
-                                                <p>Already have an account? <a href="{{ route('login.show') }}">Sign In</a></p>
+                                                <p class="mb-1"><a href="{{ route('password.request')}}">Forgot password?</a></p>
+                                                <p>Don't have an account? <a href="{{ route('register.show') }}">Create an Account</a></p>
                                             </div>
                                         </form>
                                     </div>

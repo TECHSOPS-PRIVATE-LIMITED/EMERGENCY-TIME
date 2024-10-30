@@ -24,32 +24,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* Ensure the logo fits well on mobile screens */
-        .logo-container {
+        .btn-facebook, .btn-google {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-facebook {
+            background-color: #3b5998;
+            color: white;
         }
 
-        .logo-container img {
-            max-width: 100%;
-            height: auto;
+        .btn-google {
+            background-color: #db4437;
+            color: white;
         }
 
-        .error-message {
-            color: red;
-            font-size: 0.875em; /* Slightly smaller font size for errors */
+        .btn-facebook:hover {
+            background-color: #365e92;
         }
 
-        @media (max-width: 767.98px) {
-            .logo-container {
-                padding: 10px; /* Reduce padding on smaller screens */
-            }
-
-            .login {
-                padding: 20px; /* Add some padding for better spacing */
-            }
+        .btn-google:hover {
+            background-color: #c13529;
+        }
+        
+        .logo-text {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
@@ -58,9 +64,10 @@
     <div class="container-fluid">
         <div class="row">
             <!-- The logo half -->
-            <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center bg-white">
-                <div class="logo-container">
+            <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center" style="background-color: white;">
+                <div class="text-center">
                     <img src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="Logo" class="img-fluid">
+                    <p class="logo-text">Your Health Companion</p> <!-- Text below the logo -->
                 </div>
             </div>
             <!-- The form half -->
@@ -71,61 +78,39 @@
                             <div class="col-md-10 mx-auto">
                                 <div class="card-sigin">
                                     <div class="main-signup-header">
-                                        <h3>Welcome to EmergencyTime!</h3>
-                                        <h6 class="fw-medium mb-4 fs-17">Please sign up to continue.</h6>
-                                        <form method="POST" action="{{ route('register') }}">
+                                        <h3>Welcome back!</h3>
+                                        <h6 class="fw-medium mb-4 fs-17">Please sign in to continue.</h6>
+                                        <form method="POST" action="{{ route('login') }}">
                                             @csrf
 
                                             <div class="form-group mb-3">
-                                                <label class="form-label">Name</label>
-                                                <input class="form-control" name="name" placeholder="Enter your Full Name" type="name" required>
-                                                @error('name')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            
-                                            <div class="form-group mb-3">
                                                 <label class="form-label">Email</label>
                                                 <input class="form-control" name="email" placeholder="Enter your email" type="email" required>
-                                                @error('email')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label class="form-label">Password</label>
                                                 <input class="form-control" name="password" placeholder="Enter your password" type="password" required>
-                                                @error('password')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
                                             </div>
 
-                                            <div class="form-group mb-3">
-                                                <label class="form-label">Password</label>
-                                                <input class="form-control" name="password-confirmation" placeholder="Confirm your password" type="password" required>
-                                                @error('password-confirmation')
-                                                    <div class="error-message">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            
-
-                                            <button type="submit" class="btn btn-primary btn-block w-100">Register</button>
+                                            <button type="submit" class="btn btn-primary btn-block w-100">Sign In</button>
 
                                             <div class="row mt-3">
                                                 <div class="col-sm-6">
-                                                    <button class="btn btn-block w-100 btn-facebook">
-                                                        <i class="fab fa-facebook-f me-2"></i> Register with Facebook
+                                                    <button class="btn btn-facebook btn-block w-100">
+                                                        <i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
                                                     </button>
                                                 </div>
                                                 <div class="col-sm-6 mt-2 mt-sm-0">
-                                                    <button class="btn btn-block w-100 btn-google" style="background-color: #db4437; color: white;">
-                                                        <i class="fab fa-google me-2"></i> Register with Google
+                                                    <button class="btn btn-google btn-block w-100">
+                                                        <i class="fab fa-google me-2"></i> Sign in with Google
                                                     </button>
                                                 </div>
                                             </div>
 
                                             <div class="main-signin-footer mt-4">
-                                                <p>Already have an account? <a href="{{ route('login.show') }}">Sign In</a></p>
+                                                <p class="mb-1"><a href="{{ route('password.request')}}">Forgot password?</a></p>
+                                                <p>Don't have an account? <a href="{{ route('register.show') }}">Create an Account</a></p>
                                             </div>
                                         </form>
                                     </div>

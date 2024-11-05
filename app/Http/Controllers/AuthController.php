@@ -20,6 +20,10 @@ class AuthController extends Controller
     {
         return view('authentications.register'); 
     }
+    public function showProviderForm()
+    {
+        return view('authentications.provider'); 
+    }
     public function showForgotPasswordForm()
     {
         return view('authentications.forgot'); 

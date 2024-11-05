@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Provider extends Model
 {
     use HasFactory;
+    protected $table = 'providers';
     protected $fillable = [
+        'user_id',
         'full_name',
         'date_of_birth',
         'gender',
@@ -17,7 +19,7 @@ class Provider extends Model
         'profile_picture',
         'address',
         'nationality',
-        'speciality_id', // Foreign key for the Speciality model
+        'speciality_id', 
         'sub_specialization',
         'experience_years',
         'qualifications',

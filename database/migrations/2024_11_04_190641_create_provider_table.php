@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('provider', function (Blueprint $table) {
+        Schema::create('providers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('full_name');
             $table->date('date_of_birth')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->string('license_authority')->nullable();
             $table->date('license_expiry')->nullable();
             $table->text('bio')->nullable();
-            $table->json('consultation_days')->nullable(); 
+            $table->string('consultation_days')->nullable(); 
             $table->json('consultation_hours')->nullable(); 
             $table->string('time_zone')->nullable();
             $table->integer('max_consultations_per_day')->nullable();
@@ -43,7 +44,8 @@ return new class extends Migration
             $table->dateTime('registered_date')->nullable();
             $table->dateTime('last_login')->nullable();
             $table->timestamps();
-            $table->foreign('speciality_id')->references('id')->on('speciallity')->onDelete('cascade');
+            $table->foreign('speciality_id')->references('id')->on('specialities')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

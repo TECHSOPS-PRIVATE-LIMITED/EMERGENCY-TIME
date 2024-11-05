@@ -43,7 +43,7 @@
                   </svg>
                   <h6 class="f-w-600">Providers</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
-                  <li> <a href="project-list.html">Manage Providers</a></li>
+                  <li> <a href="{{ route('providers.index') }}">Manage Providers</a></li>
                   <li> <a href="{{ route('providers.create') }}">Eroll Providers</a></li>
                 </ul>
               </li>

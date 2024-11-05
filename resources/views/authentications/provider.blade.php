@@ -50,13 +50,13 @@
           <div class="login-card login-dark">
             <div>
             <div>
-                        <a class="logo" href="index.html">
-                            <img class="img-fluid for-light m-auto" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="loginpage" style="width: 100px; height: auto;">
-                            <img class="img-fluid for-dark" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="logo" style="width: 100px; height: auto;">
-                        </a>
-                    </div>
-              <div class="login-main"> 
-                <form class="theme-form" action="{{ route('register') }}" method="POST">
+                <a class="logo" href="index.html">
+                    <img class="img-fluid for-light m-auto" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="loginpage" style="width: 100px; height: auto;">
+                    <img class="img-fluid for-dark" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="logo" style="width: 100px; height: auto;">
+                </a>
+            </div>
+            <div class="login-main" style="width: auto;">
+                <form class="theme-form"  action="{{ route('register') }}" method="POST">
                   @csrf <!-- Include CSRF token for security -->
                   <h2 class="text-center">Create your account</h2>
                   <p class="text-center">Enter your personal details to create account</p>
@@ -65,6 +65,9 @@
                     <div class="row g-2">
                       <div class="col-6">
                         <input class="form-control" type="text" name="first_name" required="" placeholder="First name">
+                      </div>
+                      <div class="col-6">
+                        <input class="form-control" type="text" name="last_name" required="" placeholder="Last name">
                       </div>
                       <div class="col-6">
                         <input class="form-control" type="text" name="last_name" required="" placeholder="Last name">

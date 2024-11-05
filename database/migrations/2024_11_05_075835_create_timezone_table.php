@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('specialities', function (Blueprint $table) {
+        Schema::create('timezone', function (Blueprint $table) {
             $table->id();
-            $table->string('speciality_name');
-            $table->string('speciality_image');
+            $table->string('timezone');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('speciallity');
+        Schema::dropIfExists('timezone');
     }
 };

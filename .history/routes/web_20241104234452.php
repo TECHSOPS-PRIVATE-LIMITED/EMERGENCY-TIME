@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PlanController;
-use App\Http\Controllers\SpecialityController;
-use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\SpeciallityController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -17,10 +16,9 @@ Route::post('/password/reset/verify', [AuthController::class, 'verifyOtp'])->nam
 
 // PLANS ROUTES
 Route::resource('plans', PlanController::class);
+
 // SPECIALLITY ROUTES
-Route::resource('specialities', SpecialityController::class);
-// PROVIDER ROUTES
-Route::resource('providers', ProviderController::class);
+Route::resource('speciallity', SpeciallityController::class);
 
 
 

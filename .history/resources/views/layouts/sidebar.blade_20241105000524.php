@@ -35,7 +35,16 @@
                   </svg>
                   <h6 class="f-w-600">Specialities </h6></a>
               </li>
-             
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
+                  <svg class="stroke-icon">
+                    <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
+                  </svg>
+                  <h6 class="f-w-600">Specialities</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
+                <ul class="sidebar-submenu">
+                  <li> <a href="">Manage Specialities</a></li>
+                  <li> <a href="projectcreate.html">Add Speciality</a></li>
+                </ul>
+              </li>
 
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
@@ -44,7 +53,7 @@
                   <h6 class="f-w-600">Providers</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
                   <li> <a href="project-list.html">Manage Providers</a></li>
-                  <li> <a href="{{ route('providers.create') }}">Eroll Providers</a></li>
+                  <li> <a href="projectcreate.html">Eroll Providers</a></li>
                 </ul>
               </li>
 

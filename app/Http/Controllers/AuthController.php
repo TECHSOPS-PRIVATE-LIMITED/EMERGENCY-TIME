@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Patients;
 use App\Mail\OtpMail;
 use App\Models\User;
 
@@ -46,9 +47,18 @@ class AuthController extends Controller
         $user->email = $validatedData['email'];
         $user->password = Hash::make($validatedData['password']); 
         $user->save();
+
+
+        $patient = new Patients();
+        $patient->name = $user->name;
+        $patient->email = $user->email;
+        $patient->user_id = $user->id; 
+        $patient->profile_status = 0; 
+        $patient->save();
         Auth::login($user);
-        return redirect()->route('dasboard')->with('success', 'Account created successfully!');
+        return redirect()->route('dashboard')->with('success', 'Account created successfully!');
     }
+
     public function login(Request $request)
     {
        

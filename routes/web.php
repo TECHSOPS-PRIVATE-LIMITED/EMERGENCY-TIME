@@ -38,3 +38,4 @@ Route::get('/dashboard', function () {
 Route::get('/clientside', [ClientController::class, 'index'])->name('client.index');
 Route::get('/clientside/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::get('/clientside/provider', [ClientController::class, 'providerapplication'])->name('client.provider');
+Route::post('/clientside/providerstore', [ClientController::class, 'providerstore'])->name('client.provider.store');

@@ -25,6 +25,13 @@
               </div>
             </div>
           </div>
+
+      <!-- Static alert example -->
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Info!</strong> This platform is under development. If you find any error or bug please share with us.
+          
+        </div>
+
           <div class="nav-right">
             <ul class="header-right"> 
               <li class="custom-dropdown">

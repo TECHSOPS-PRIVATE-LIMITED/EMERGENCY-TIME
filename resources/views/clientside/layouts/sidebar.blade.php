@@ -12,7 +12,7 @@
               </li>
         
              
-               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="file-manager.html">
+               <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="file-manager.html">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
                   </svg>
@@ -51,7 +51,7 @@
                   <li> <a href="projectcreate.html">Add Appointments</a></li>
                 </ul>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </aside>

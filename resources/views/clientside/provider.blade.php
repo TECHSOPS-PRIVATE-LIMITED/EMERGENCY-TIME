@@ -27,7 +27,7 @@
             @endif
         </div>
         <div class="card">
-            <form action="{{ route('providers.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('client.provider.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row g-3">
@@ -159,27 +159,14 @@
                             <label for="consultation_duration" class="form-label">Consultation Duration (mins)</label>
                             <input type="number" class="form-control" id="consultation_duration" name="consultation_duration" value="30">
                         </div>
-                        <div class="col-md-6">
-                            <label for="status" class="form-label">Status</label>
-                            <select class="form-select" id="status" name="status">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                                <option value="pending">Pending</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="is_verified" class="form-label">Verified</label>
-                            <select class="form-select" id="is_verified" name="is_verified">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
-                        </div>
+                      
+                        
                         <div class="col-md-6">
                             <label for="registered_date" class="form-label">Registered Date</label>
                             <input type="datetime-local" class="form-control" id="registered_date" name="registered_date">
                         </div>
                         <div class="col-12 mt-3">
-                            <button type="submit" class="btn btn-primary">Save Provider</button>
+                            <button type="submit" class="btn btn-primary">Apply for Provider</button>
                         </div>
                     </div>
                 </div>

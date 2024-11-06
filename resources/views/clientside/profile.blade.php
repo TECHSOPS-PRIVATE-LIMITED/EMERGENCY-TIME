@@ -37,20 +37,20 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="ttl-info text-start">
-                                <h6><i class="fa-solid fa-envelope"></i>   Email</h6><span>Marekjecno@yahoo.com</span>
+                                <h6><i class="fa-solid fa-envelope"></i> Email</h6><span>{{ $patients->email ?? "" }}</span>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="ttl-info text-start">
-                                <h6><i class="fa-solid fa-calendar"></i>   BOD</h6><span>02 January 1988</span>
+                                <h6><i class="fa-solid fa-calendar"></i> Birth Date</h6><span>{{ $patients->birth_date  ?? "Not Available"}}</span>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
                           <div class="user-designation">
-                            <div class="title"><a target="_blank" href="">Mark jecno</a></div>
-                            <div class="desc">designer</div>
+                            <div class="title"><a target="_blank" href="">{{ $patients->name }}</a></div>
+                            <div class="desc">EMERGENCY TIME</div>
                             <div class="text-end mt-3">
                                 <a href="{{ route('client.provider') }}" class="btn btn-primary btn-block w-100">Apply for Provider</a>
                             </div>
@@ -60,12 +60,12 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="ttl-info text-start">
-                                <h6><i class="fa-solid fa-phone"></i>   Contact Us</h6><span>India +91 123-456-7890</span>
+                                <h6><i class="fa-solid fa-phone"></i>   Identity No</h6><span>{{ $patients->identity_no ?? "Not Available" }}</span>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="ttl-info text-start">
-                                <h6><i class="fa-solid fa-location-arrow"></i>   Location</h6><span>B69 Near Schoool Demo Home</span>
+                                <h6><i class="fa-solid fa-location-arrow"></i> Home Town</h6><span>{{ $patients->country   ?? "Not Available" }}</span>
                               </div>
                             </div>
                           </div>

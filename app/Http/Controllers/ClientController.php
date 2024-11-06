@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Provider;
+use App\Models\Patients;
 use App\Models\Speciality;
 use App\Models\Timezone;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -17,7 +19,9 @@ class ClientController extends Controller
 
     public function profile()
     {
-        return view('clientside.profile');
+        $patients = Patients::where('user_id', Auth::user()->id)->first(); 
+        return view('clientside.profile', compact('patients'));
+
     }
 
     public function providerapplication()
@@ -57,10 +61,7 @@ class ClientController extends Controller
             'bank_name' => 'nullable|string|max:255',
             'account_number' => 'nullable|string|max:255',
             'consultation_duration' => 'nullable|integer',
-            'status' => 'nullable|in:active,inactive,pending',
-            'is_verified' => 'boolean',
             'registered_date' => 'nullable|date',
-            'last_login' => 'nullable|date',
         ]);
     
         if ($request->hasFile('profile_picture')) {
@@ -72,17 +73,8 @@ class ClientController extends Controller
             'start' => $validated['consultation_hours']['start'],
             'end' => $validated['consultation_hours']['end'],
         ]);
-    
-        // Create the user with the provided email and default password
-        $user = User::create([
-            'name' => $validated['full_name'],
-            'email' => $validated['email'],
-         // Default password
-            // Add any other necessary fields for the User model if needed
-        ]);
-    
-        // Save the provider with the user_id
-        $validated['user_id'] = $user->id; // Set the user_id from the created user
+        $userId = Auth::user()->id;
+        $validated['user_id'] = $userId->id; 
         Provider::create($validated);
     
         return redirect()->route('providers.index')->with('success', 'Provider created successfully.');

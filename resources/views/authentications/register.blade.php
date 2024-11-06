@@ -32,13 +32,12 @@
     <style>
         .login-card {
             background-image: url("{{ asset('admin/images/login/login_bg.jpg') }}");
-            /* Additional styling can go here */
         }
     </style>
+</head>
 <body>
     <!-- tap on top starts-->
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
-    <!-- tap on top ends-->
     <!-- loader-->
     <div class="loader-wrapper">
         <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
@@ -49,39 +48,65 @@
         <div class="col-12 p-0">    
           <div class="login-card login-dark">
             <div>
-            <div>
+              <div>
                 <a class="logo" href="index.html">
                     <img class="img-fluid for-light m-auto" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="loginpage" style="width: 100px; height: auto;">
                     <img class="img-fluid for-dark" src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="logo" style="width: 100px; height: auto;">
                 </a>
-            </div>
+              </div>
               <div class="login-main"> 
                 <form class="theme-form" action="{{ route('register') }}" method="POST">
-                  @csrf <!-- Include CSRF token for security -->
+                  @csrf
                   <h2 class="text-center">Create your account</h2>
-                  <p class="text-center">Enter your personal details to create account</p>
+                  <p class="text-center">Enter your personal details to create an account</p>
+
+                  <!-- Display general error messages -->
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+
                   <div class="form-group">
                     <label class="col-form-label pt-0">Your Name</label>
                     <div class="row g-2">
                       <div class="col-6">
-                        <input class="form-control" type="text" name="first_name" required="" placeholder="First name">
+                        <input class="form-control @error('first_name') is-invalid @enderror" type="text" name="first_name" value="{{ old('first_name') }}" required="" placeholder="First name">
+                        @error('first_name')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="col-6">
-                        <input class="form-control" type="text" name="last_name" required="" placeholder="Last name">
+                        <input class="form-control @error('last_name') is-invalid @enderror" type="text" name="last_name" value="{{ old('last_name') }}" required="" placeholder="Last name">
+                        @error('last_name')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
                       </div>
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label class="col-form-label">Email Address</label>
-                    <input class="form-control" type="email" name="email" required="" placeholder="Test@gmail.com">
+                    <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" required="" placeholder="Test@gmail.com">
+                    @error('email')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                   </div>
+
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="password" required="" placeholder="*********">
-                      <div class="show-hide"><span class="show"></span></div>
+                      <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" required="" placeholder="*********">
+                      @error('password')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
                   </div>
+
                   <div class="form-group mb-0 checkbox-checked">
                     <div class="form-check checkbox-solid-info">
                       <input class="form-check-input" id="solid6" type="checkbox" required>
@@ -90,6 +115,7 @@
                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Create Patient Account</button>
                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Register as a Provider</button>
                   </div>
+
                   <div class="login-social-title">
                     <h6>Or Sign up with</h6>
                   </div>
@@ -109,13 +135,14 @@
           </div>
         </div>
       </div>
-     <!-- Scripts -->
-     <script src="{{ asset('admin/assets/js/vendors/jquery/jquery.min.js') }}"></script>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="{{ asset('admin/assets/js/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}" defer=""></script>
     <script src="{{ asset('admin/assets/js/vendors/bootstrap/dist/js/popper.min.js') }}" defer=""></script>
     <script src="{{ asset('admin/assets/js/vendors/font-awesome/fontawesome-min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/password.js') }}"></script>
     <script src="{{ asset('admin/assets/js/script.js') }}"></script>
-    </div>
-  </body>
+</body>
 </html>

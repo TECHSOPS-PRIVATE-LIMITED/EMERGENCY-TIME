@@ -5,12 +5,12 @@
           <div class="main-sidebar" id="main-sidebar">
             <ul class="sidebar-menu" id="simple-bar">
             
-            <li class="sidebar-main-title">
+            <!-- <li class="sidebar-main-title">
                 <div>
                   <h5 class="f-w-700 sidebar-title pt-3">PATIENT MENU</h5>
                 </div>
               </li>
-        
+         -->
              
                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#">
                   <svg class="stroke-icon">

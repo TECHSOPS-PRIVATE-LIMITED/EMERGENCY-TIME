@@ -12,7 +12,7 @@
               </li>
         
              
-               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#">
+               <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="file-manager.html">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
                   </svg>
@@ -25,17 +25,17 @@
                   </svg>
                   <h6 class="f-w-600">Subscription</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
-                  <li> <a href="#">Plan Details</a></li>
-                  <li> <a href="#">Transaction History</a></li>
+                  <li> <a href="{{ route('plans.index')}}">Plan Details</a></li>
+                  <li> <a href="{{ route('plans.create') }}">Transaction History</a></li>
                 </ul>
               </li>
-              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="{{ route('specialities.index') }}">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
                   </svg>
                   <h6 class="f-w-600">Providers</h6></a>
               </li>
-              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="file-manager.html">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
                   </svg>
@@ -47,11 +47,11 @@
                   </svg>
                   <h6 class="f-w-600">Appointments</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
-                  <li> <a href="#">Manage Appointments</a></li>
-                  <li> <a href="#">Add Appointments</a></li>
+                  <li> <a href="project-list.html">Manage Appointments</a></li>
+                  <li> <a href="projectcreate.html">Add Appointments</a></li>
                 </ul>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </aside>

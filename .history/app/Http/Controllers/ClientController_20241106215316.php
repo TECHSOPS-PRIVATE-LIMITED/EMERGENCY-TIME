@@ -16,18 +16,21 @@ class ClientController extends Controller
     {
         return view('clientside.index');
     }
+
     public function profile()
     {
         $patients = Patients::where('user_id', Auth::user()->id)->first(); 
         return view('clientside.profile', compact('patients'));
 
     }
+
     public function providerapplication()
     {
         $timezones = Timezone::all();
         $specialities = Speciality::all();
         return view('clientside.provider', compact('timezones','specialities'));
     }
+
     public function providerstore(Request $request)
     {
         $validated = $request->validate([
@@ -71,9 +74,9 @@ class ClientController extends Controller
             'end' => $validated['consultation_hours']['end'],
         ]);
         $userId = Auth::user()->id;
-        $validated['user_id'] = $userId; 
-        Patients::where('user_id', $userId)->delete();
+        $validated['user_id'] = $userId->id; 
         Provider::create($validated);
+    
         return redirect()->route('providers.index')->with('success', 'Provider created successfully.');
     }
 }

@@ -105,8 +105,8 @@
                 <div class="user-wrap">
                   <div class="user-img"><img src="{{ asset('admin/assets/images/profile.png')}}" alt="user"/></div>
                   <div class="user-content">
-                    <h6>{{ Auth::user()->name }}</h6>
-                    <p class="mb-0"><i class="fa-solid fa-chevron-down"></i></p>
+                    <h6>Ava Davis</h6>
+                    <p class="mb-0">Admin<i class="fa-solid fa-chevron-down"></i></p>
                   </div>
                 </div>
                 <div class="custom-menu overflow-hidden">
@@ -119,7 +119,12 @@
                     <li class="d-flex"> 
                       <svg class="svg-color">
                         <use href="../assets/svg/iconly-sprite.svg#Message"></use>
-                      </svg><a class="ms-2" href="#">Inbox</a>
+                      </svg><a class="ms-2" href="letter-box.html">Inbox</a>
+                    </li>
+                    <li class="d-flex"> 
+                      <svg class="svg-color">
+                        <use href="../assets/svg/iconly-sprite.svg#Document"></use>
+                      </svg><a class="ms-2" href="to-do.html">Task</a>
                     </li>
                     <li class="d-flex"> 
                       <svg class="svg-color">
@@ -128,9 +133,11 @@
                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Log Out
                         </a>
+
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+
                     </li>
                   </ul>
                 </div>

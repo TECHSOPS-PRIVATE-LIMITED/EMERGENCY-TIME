@@ -3,32 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Provider;
-use App\Models\Patients;
 use App\Models\Speciality;
 use App\Models\Timezone;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
-class ClientController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        return view('clientside.index');
+        return view('site.site');
     }
-    public function profile()
-    {
-        $patients = Patients::where('user_id', Auth::user()->id)->first(); 
-        return view('clientside.profile', compact('patients'));
 
-    }
-<<<<<<< HEAD
-    public function providerapplication()
+    public function providerregisteration()
     {
         $timezones = Timezone::all();
         $specialities = Speciality::all();
-        return view('clientside.provider', compact('timezones','specialities'));
+        return view('site.provider',compact('timezones','specialities'));
     }
+
     public function providerstore(Request $request)
     {
         $validated = $request->validate([
@@ -72,11 +63,9 @@ class ClientController extends Controller
             'end' => $validated['consultation_hours']['end'],
         ]);
         $userId = Auth::user()->id;
-        $validated['user_id'] = $userId; 
-        Patients::where('user_id', $userId)->delete();
+        $validated['user_id'] = $userId->id; 
         Provider::create($validated);
+    
         return redirect()->route('providers.index')->with('success', 'Provider created successfully.');
     }
-=======
->>>>>>> 001d4c13 (website updated)
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -25,17 +26,15 @@ Route::resource('specialities', SpecialityController::class);
 Route::resource('providers', ProviderController::class);
 
 
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/providerregisteration', [HomeController::class, 'providerregisteration'])->name('providerregisteration');
+Route::post('/providerstore', [HomeController::class, 'providerstore'])->name('apply.provider.store');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/dashboard', function () {
     return view('dashboards.dashboard');
 })->name('dashboard');
 
 
 //CLIENT SIDE ROUTES
-Route::get('/clientside', [ClientController::class, 'index'])->name('client.index');
+
 Route::get('/clientside/profile', [ClientController::class, 'profile'])->name('client.profile');
-Route::get('/clientside/provider', [ClientController::class, 'providerapplication'])->name('client.provider');
-Route::post('/clientside/providerstore', [ClientController::class, 'providerstore'])->name('client.provider.store');

@@ -112,8 +112,7 @@
                       <input class="form-check-input" id="solid6" type="checkbox" required>
                       <label class="form-check-label" for="solid6">Agree with</label><a class="ms-3 link" href="forget-password.html">Privacy Policy</a>
                     </div>
-                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Create Patient Account</button>
-                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Register as a Provider</button>
+                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Create Account</button>
                   </div>
 
                   <div class="login-social-title">

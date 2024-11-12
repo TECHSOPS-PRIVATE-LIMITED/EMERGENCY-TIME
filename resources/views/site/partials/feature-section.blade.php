@@ -45,10 +45,10 @@
                 <div class="col-md-4 text-center">
                     <div class="fearures-mockup-dubble pt-100">
                         <div class="fearures-mockup fearures-mockup-alt iphonex wow fadeInLeft" data-wow-duration="1s">
-                            <img src="{{ asset('site/images/scv-3.jpg') }}" alt="features-mockup" />
+                            <img src="{{ asset('site/images/list.png') }}" alt="features-mockup" />
                         </div>
                         <div class="fearures-mockup fearures-mockup-two iphonex wow fadeInUp" data-wow-duration="1s">
-                            <img src="{{ asset('site/images/scv-2.jpg') }}" alt="features-mockup" />
+                            <img src="{{ asset('site/images/profile.png') }}" alt="features-mockup" />
                         </div>
                     </div>
                 </div><!-- .col -->

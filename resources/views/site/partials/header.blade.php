@@ -12,8 +12,8 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="">
-                        <img class="logo logo-light" src="{{ asset('images/logo.png') }}" alt="logo" style="height: auto; max-height: 70px;" />
-                        <img class="logo logo-color" src="{{ asset('images/logo.png') }}" alt="logo" style="height: auto; max-height: 70px;" />
+                        <img class="logo logo-light" src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="logo" style="height: auto; max-height: 70px;" />
+                        <img class="logo logo-color" src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="logo" style="height: auto; max-height: 70px;" />
                     </a>
                 </div>
 
@@ -62,9 +62,9 @@
                 </div><!-- .col -->
                 <div class="text-center col-md-6">
                     <div class="alt-header-mockup">
-                        <img class="mockup-left wow fadeInLeft" data-wow-duration=".5s" data-wow-delay=".9s" src="{{ asset('site/images/header-screen-2.jpg') }}" alt="header-screen" />
-                        <img class="mockup-middle wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s" src="{{ asset('site/images/header-screen-1.jpg') }}" alt="header-screen" />
-                        <img class="mockup-right wow fadeInRight" data-wow-duration=".5s" data-wow-delay="1.2s" src="{{ asset('site/images/header-screen-3.jpg') }}" alt="header-screen" />
+                        <img class="mockup-left wow fadeInLeft" data-wow-duration=".5s" data-wow-delay=".9s" src="{{ asset('site/images/login.png') }}" alt="header-screen" />
+                        <img class="mockup-middle wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s" src="{{ asset('site/images/dash.png') }}" alt="header-screen" />
+                        <img class="mockup-right wow fadeInRight" data-wow-duration=".5s" data-wow-delay="1.2s" src="{{ asset('site/images/register.png') }}" alt="header-screen" />
                     </div>
                 </div>
             </div><!-- .row -->

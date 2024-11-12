@@ -31,7 +31,7 @@
                                 <li><em class="ti ti-close"></em>Appointment Reminders</li>
                             </ul>
                             @if(Auth::check())
-                                <a href="{{ route('stripe') }}" class="button button-uppercase">{{ __('Buy Subscription') }}</a>
+                                <a href="#" class="button button-uppercase">{{ __('Buy Subscription') }}</a>
                             @else
                                 <a href="{{ route('login') }}" class="button button-uppercase">{{ __('Login to Buy') }}</a>
                             @endif
@@ -55,7 +55,7 @@
                                 <li><em class="ti ti-check"></em>Appointment Reminders</li>
                             </ul>
                             @if(Auth::check())
-                                <a href="{{ route('stripe') }}" class="button button-uppercase">{{ __('Buy Subscription') }}</a>
+                                <a href="#" class="button button-uppercase">{{ __('Buy Subscription') }}</a>
                             @else
                                 <a href="{{ route('login') }}" class="button button-uppercase">{{ __('Login to Buy') }}</a>
                             @endif

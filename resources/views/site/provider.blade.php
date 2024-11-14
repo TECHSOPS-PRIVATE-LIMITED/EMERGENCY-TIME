@@ -38,12 +38,6 @@
                                 <input id="full_name" name="full_name" type="text" placeholder="Full Name" class="form-control required">
                             </div>
                             <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Date of Birth</p>
-                                <input id="date_of_birth" name="date_of_birth" type="date" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Gender</p>
                                 <select name="gender" class="form-control">
                                     <option value="">Select Gender</option>
@@ -52,27 +46,22 @@
                                     <option value="other">Other</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group row">
+                           
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Email *</p>
                                 <input name="email" type="email" placeholder="Email" class="form-control required">
                             </div>
-                        </div>
-
-                        <!-- Contact Details -->
-                        <div class="form-group row">
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Phone Number *</p>
                                 <input name="phone_number" type="text" placeholder="Phone Number" class="form-control required">
-                            </div>
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Profile Picture</p>
-                                <input name="profile_picture" type="file" class="form-control">
                             </div>
                         </div>
 
                         <!-- Professional Details -->
                         <div class="form-group row">
-                        <div class="form-field col-sm-6">
+                            <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Speciality</p>
                                 <select id="speciality_id" name="speciality_id" class="form-control required">
                                     <option value="">Select Speciality</option>
@@ -82,90 +71,23 @@
                                 </select>
                             </div>
                             <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Sub-Specialization</p>
-                                <input name="sub_specialization" type="text" placeholder="Sub-Specialization" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Years of Experience</p>
-                                <input name="experience_years" type="number" placeholder="Years of Experience" class="form-control">
-                            </div>
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Qualifications</p>
-                                <input name="qualifications" type="text" placeholder="Qualifications" class="form-control">
-                            </div>
-                        </div>
-
-                        <!-- License Information -->
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
                                 <p style="text-align: left;">License Number</p>
                                 <input name="license_number" type="text" placeholder="License Number" class="form-control">
                             </div>
+                        </div>
+                      
+                        <!-- License Information -->
+                        <div class="form-group row">
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">License Authority</p>
                                 <input name="license_authority" type="text" placeholder="License Authority" class="form-control">
                             </div>
-                        </div>
-                        <div class="form-group row">
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">License Expiry Date</p>
                                 <input name="license_expiry" type="date" class="form-control">
                             </div>
                         </div>
-
-                        <!-- Consultation Details -->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <p style="text-align: left;">Consultation Days</p>
-                                <div class="form-check" style="text-align: left">
-                                    @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
-                                        <input type="checkbox" class="form-check-input" id="day_{{ $day }}" name="consultation_days[]" value="{{ strtolower($day) }}">
-                                        <label class="form-check-label" for="day_{{ $day }}">{{ $day }}</label><br>
-                                    @endforeach
-                                </div>   
-                            </div>
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Max Consultations per Day</p>
-                                <input name="max_consultations_per_day" type="number" placeholder="Max Consultations per Day" class="form-control">
-                                <p style="text-align: left;"> Each consulation take 15 mins</p>
-                            </div>
-                            
-                        </div>
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Consultation Fee</p>
-                                <input name="consultation_fee" type="number" step="0.01" placeholder="Consultation Fee in US $ for 15 mins" class="form-control">
-                            </div>
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Consultation Type</p>
-                                <select name="consultation_type" class="form-control">
-                                    <option value="video">Video</option>
-                                    <option value="audio">Audio</option>
-                                    <option value="chat">Chat</option>
-                                    <option value="in-person">In-person</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Bank Details -->
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Bank Name</p>
-                                <input name="bank_name" type="text" placeholder="Bank Name" class="form-control">
-                            </div>
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Account Number</p>
-                                <input name="account_number" type="text" placeholder="Account Number" class="form-control">
-                            </div>
-                        </div>
-
-                        <!-- Additional Details -->
-                        <div class="form-group">
-                            <p style="text-align: left;">Biography</p>
-                            <textarea name="biography" rows="4" placeholder="Brief Biography" class="form-control"></textarea>
-                        </div>
+                      
 
                         <!-- Submit Button -->
                         <button type="submit" class="button solid-btn sb-h">Submit</button>

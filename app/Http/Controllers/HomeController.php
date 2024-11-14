@@ -8,7 +8,7 @@ use App\Models\Timezone;
 use App\Models\User;
 use App\Models\Provider;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Permission\Models\Role;
 class HomeController extends Controller
 {
     public function index()

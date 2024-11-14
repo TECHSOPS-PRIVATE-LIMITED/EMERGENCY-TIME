@@ -94,7 +94,7 @@
                   </svg>
                   <h6 class="f-w-600">General Setting</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
-                  <li> <a href="project-list.html">Roles & Permissions</a></li>
+                  <li> <a href="{{ route('roles.index') }}">Roles & Permissions</a></li>
                   <li> <a href="projectcreate.html">Payment Gateway</a></li>
                   <li> <a href="projectcreate.html">Video Conferencing</a></li>
                 </ul>

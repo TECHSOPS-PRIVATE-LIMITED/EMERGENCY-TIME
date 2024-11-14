@@ -66,6 +66,11 @@ class HomeController extends Controller
         $validated['user_id'] = $user->id;
         Provider::create($validated);
 
+        $role = Role::where('id', '2')->first();
+        if ($role) {
+            $user->roles()->attach($role->id); // Attach the role to the user
+        }
+
         return redirect()->route('provider.success')->with('success', 'Application is Succesfully Submitted.');
     }
 

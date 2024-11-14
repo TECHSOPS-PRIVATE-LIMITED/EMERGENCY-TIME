@@ -7,6 +7,7 @@ use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -26,7 +27,7 @@ Route::post('/providerstore', [HomeController::class, 'providerstore'])->name('a
 Route::get('/providersuccess', [HomeController::class, 'providersuccess'])->name('provider.success');
 
 
-
+Route::resource('roles', RoleController::class);
 
 
 

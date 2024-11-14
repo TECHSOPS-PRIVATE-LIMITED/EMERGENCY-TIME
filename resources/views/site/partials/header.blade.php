@@ -28,11 +28,6 @@
                         <li><a class="nav-item" href="#contacts">Contact Us</a></li>
                         @auth
                             <li>
-                                <a class="nav-item" style="padding:10px; background-color:black; color:white; border-radius: 5px;">
-                                    {{ \Illuminate\Support\Str::limit(Auth::user()->name, 15, '') }}</a>
-                            </li>
-                        @else
-                            <li>
                                 <a class="nav-item" style="padding: 10px; background-color:black; border-radius:5px; color:white;" href="{{ route('login') }}">
                                     {{ __('Register/Login') }}</a>
                             </li>

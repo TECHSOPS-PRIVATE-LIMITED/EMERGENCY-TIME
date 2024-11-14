@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Speciality;
 use App\Models\Timezone;
+use App\Models\User;
+use App\Models\Provider;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -22,6 +25,7 @@ class HomeController extends Controller
 
     public function providerstore(Request $request)
     {
+        
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'date_of_birth' => 'nullable|date',
@@ -40,9 +44,7 @@ class HomeController extends Controller
             'license_expiry' => 'nullable|date',
             'bio' => 'nullable|string',
             'consultation_days' => 'required|array',
-            'consultation_days.*' => 'string|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
-            'consultation_hours.start' => 'required|date_format:H:i',
-            'consultation_hours.end' => 'required|date_format:H:i',
+            'consultation_days.*' => 'string|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',  
             'time_zone' => 'nullable|string',
             'max_consultations_per_day' => 'nullable|integer',
             'consultation_fee' => 'nullable|numeric',
@@ -50,22 +52,25 @@ class HomeController extends Controller
             'bank_name' => 'nullable|string|max:255',
             'account_number' => 'nullable|string|max:255',
             'consultation_duration' => 'nullable|integer',
-            'registered_date' => 'nullable|date',
         ]);
-    
+        
+        $user = User::create([
+            'name' => $validated['full_name'],
+            'email' => $validated['email'],
+            'password' => Hash::make('1234'),  
+        ]);
         if ($request->hasFile('profile_picture')) {
             $validated['profile_picture'] = $request->file('profile_picture')->store('profile_pictures', 'public');
         }
-    
         $validated['consultation_days'] = implode(',', $validated['consultation_days']);
-        $validated['consultation_hours'] = json_encode([
-            'start' => $validated['consultation_hours']['start'],
-            'end' => $validated['consultation_hours']['end'],
-        ]);
-        $userId = Auth::user()->id;
-        $validated['user_id'] = $userId->id; 
+        $validated['user_id'] = $user->id;
         Provider::create($validated);
-    
-        return redirect()->route('providers.index')->with('success', 'Provider created successfully.');
+
+        return redirect()->route('provider.success')->with('success', 'Application is Succesfully Submitted.');
+    }
+
+    public function providersuccess()
+    {
+        return view('site.success');
     }
 }

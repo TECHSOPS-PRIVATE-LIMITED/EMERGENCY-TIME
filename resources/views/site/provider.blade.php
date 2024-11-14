@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Emergency Time') }}</title>
+    <title>EMERGENCY TIME</title>
     <link rel="stylesheet" href="{{ asset('site/assets/css/vendor.bundle.css') }}">
     <link href="{{ asset('site/assets/css/style.css?ver=131') }}" rel="stylesheet">
     <link href="{{ asset('site/assets/css/theme-green-blue.css?ver=131') }}" rel="stylesheet">
@@ -19,8 +19,8 @@
         <div class="text-center section-head heading-light">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <img src="{{ asset('site/assets/images/logo.png') }}" alt="Logo" class="logo mb-4">
-                    <h2 class="heading heading-light">Register Profile</h2>
+                <img src="{{ asset('admin/assets/images/brand-logos/logo.png') }}" alt="Logo" class="logo mb-4" style="height: 80px;">
+                    <h2 class="heading heading-light">Apply for Provider</h2>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                                 <select id="speciality_id" name="speciality_id" class="form-control required">
                                     <option value="">Select Speciality</option>
                                     @foreach ($specialities as $speciality)
-                                        <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                                        <option value="{{ $speciality->id }}">{{ $speciality->speciality_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -129,19 +129,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <p style="text-align: left;">Consultation Hours</p>
-                                <div class="d-flex">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">Start</span>
-                                        <input type="text" class="form-control clockpicker" name="consultation_hours[start]" placeholder="Select Time">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">End</span>
-                                        <input type="text" class="form-control clockpicker" name="consultation_hours[end]" placeholder="Select Time">
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div class="form-group row">
@@ -150,13 +138,14 @@
                                 <select id="time_zone" name="time_zone" class="form-control">
                                     <option value="">Select Time Zone</option>
                                     @foreach ($timezones as $timezone)
-                                        <option value="{{ $timezone->name }}">{{ $timezone->name }}</option>
+                                        <option value="{{ $timezone->id }}">{{ $timezone->timezone }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Max Consultations per Day</p>
                                 <input name="max_consultations_per_day" type="number" placeholder="Max Consultations per Day" class="form-control">
+                                <p style="text-align: left;"> Each consulation take 15 mins</p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -208,14 +197,3 @@
 </body>
 </html>
 
-<script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-$(document).ready(function() {
-    // Initialize clockpicker for the start and end time inputs
-    $('.clockpicker').clockpicker({
-        donetext: 'Done',
-        twelvehour: true,  // Optional: If you want 12-hour format instead of 24-hour
-        autoclose: true
-    });
-});
-</script>

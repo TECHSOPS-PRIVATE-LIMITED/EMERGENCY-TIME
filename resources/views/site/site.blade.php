@@ -9,7 +9,7 @@
     <!-- Fav Icon  -->
     {{--    <!-- <link rel="shortcut icon" href="{{ asset('site/assets/images/favicon.png') }}"> -->--}}
     <!-- Site Title  -->
-    <title>{{ config('app.name', 'Emergency Time') }}</title>
+    <title>EMERGENCY TIME</title>
     <!-- Vendor Bundle CSS -->
     <link rel="stylesheet" href="{{ asset('site/assets/css/vendor.bundle.css') }}">
     <!-- Custom styles for this template -->

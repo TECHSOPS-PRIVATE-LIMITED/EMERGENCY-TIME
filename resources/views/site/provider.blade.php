@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="{{ asset('site/assets/css/vendor.bundle.css') }}">
     <link href="{{ asset('site/assets/css/style.css?ver=131') }}" rel="stylesheet">
     <link href="{{ asset('site/assets/css/theme-green-blue.css?ver=131') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.3.1/bootstrap-clockpicker.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.3.1/bootstrap-clockpicker.min.js"></script>
-
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <body>
 
 <div id="contacts" class="contact-section section gradiant-background pb-90">
@@ -75,7 +72,7 @@
 
                         <!-- Professional Details -->
                         <div class="form-group row">
-                            <div class="form-field col-sm-6">
+                        <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Speciality</p>
                                 <select id="speciality_id" name="speciality_id" class="form-control required">
                                     <option value="">Select Speciality</option>
@@ -127,26 +124,14 @@
                                         <input type="checkbox" class="form-check-input" id="day_{{ $day }}" name="consultation_days[]" value="{{ strtolower($day) }}">
                                         <label class="form-check-label" for="day_{{ $day }}">{{ $day }}</label><br>
                                     @endforeach
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="form-field col-sm-6">
-                                <p style="text-align: left;">Time Zone</p>
-                                <select id="time_zone" name="time_zone" class="form-control">
-                                    <option value="">Select Time Zone</option>
-                                    @foreach ($timezones as $timezone)
-                                        <option value="{{ $timezone->id }}">{{ $timezone->timezone }}</option>
-                                    @endforeach
-                                </select>
+                                </div>   
                             </div>
                             <div class="form-field col-sm-6">
                                 <p style="text-align: left;">Max Consultations per Day</p>
                                 <input name="max_consultations_per_day" type="number" placeholder="Max Consultations per Day" class="form-control">
                                 <p style="text-align: left;"> Each consulation take 15 mins</p>
                             </div>
+                            
                         </div>
                         <div class="form-group row">
                             <div class="form-field col-sm-6">
@@ -194,6 +179,16 @@
 <!-- Scripts -->
 <script src="{{ asset('site/assets/js/jquery.bundle.js') }}"></script>
 <script src="{{ asset('site/assets/js/script.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#speciality_id').select2({
+            width: 100% // Allows clearing the selection
+        });
+    });
+</script>
+
 </body>
 </html>
 

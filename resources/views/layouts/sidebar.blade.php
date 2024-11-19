@@ -54,7 +54,7 @@
                   </svg>
                   <h6 class="f-w-600">Patients</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
                 <ul class="sidebar-submenu">
-                  <li> <a href="project-list.html">Manage Patients</a></li>
+                  <li> <a href="{{ route('patients.index') }}">Manage Patients</a></li>
                   <li> <a href="projectcreate.html">Eroll Patients</a></li>
                 </ul>
               </li>

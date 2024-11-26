@@ -4,17 +4,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountriesController;
-use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\SpecialityController;
 
 Route::get('/user', function (Request $request) {
          return $request->user();
 })->middleware('auth:sanctum');
+
 Route::post('registerApi', [AuthController::class, 'registerApi']);
 Route::post('loginApi', [AuthController::class, 'loginApi']);
+
+
 // Countries API's
 Route::get('/countrieslist', [CountriesController::class, 'countryapi'])->middleware('auth:sanctum');
+
 // Speciallities API's
 Route::get('/specialitieslist', [SpecialityController::class, 'getSpecialities'])->middleware('auth:sanctum');
 // Providers API's
-Route::get('/get-providers', [ProviderController::class, 'getProviders'])->middleware('auth:sanctum');
+Route::get('/get-providers', [YourControllerName::class, 'getProviders']);

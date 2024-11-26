@@ -66,15 +66,14 @@
                             <input type="text" class="form-control" id="address" name="address">
                         </div>
                         <div class="col-md-6">
-                        <label for="nationality" class="form-label">Nationality</label>
-                        <select class="form-select" id="nationality" name="nationality">
-                            <option value="" selected disabled>Select Nationality</option>
-                            @foreach($countries as $country)
-                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
+                            <label for="nationality" class="form-label">Nationality</label>
+                            <select class="form-select" id="gender" name="nationality">
+                                <option value="" selected disabled>Select Nationality</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
                         <div class="col-md-6">
                             <label for="speciality_id" class="form-label">Speciality</label>
                             <select class="form-select" id="speciality_id" name="speciality_id">

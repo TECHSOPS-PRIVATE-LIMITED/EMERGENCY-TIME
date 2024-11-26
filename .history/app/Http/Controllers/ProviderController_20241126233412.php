@@ -6,7 +6,6 @@ use App\Models\Country;
 use App\Models\Provider;
 use App\Models\Speciality;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Timezone;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -122,38 +121,22 @@ class ProviderController extends Controller
         return redirect()->route('providers.index')->with('success', 'Provider deleted successfully.');
     }
     public function getProviders(Request $request)
-{
-    // Validate the request
-    $validated = $request->validate([
-        'country_id' => 'required|exists:countries,id',
-    ]);
-
-    $countryId = $validated['country_id'];
-
-    // Fetch providers based on nationality
-    $providers = Provider::where('nationality', $countryId)->with('speciality')->get();
-
-    // Format the response data
-    $responseData = $providers->map(function ($provider) {
-        return [
-            'id' => $provider->id,
-            'full_name' => $provider->full_name,
-            'profile_picture' => $provider->profile_picture 
-                ? Storage::url($provider->profile_picture) 
-                : null,
-            'speciality' => $provider->speciality->speciality_name ?? null,
-            'experience_years' => $provider->experience_years,
-            'consultation_fee' => $provider->consultation_fee,
-            'consultation_days' => $provider->consultation_days,
-            'consultation_hours' => $provider->consultation_hours,
-        ];
-    });
-
-    // Return the response
-    return response()->json([
-        'status' => 'success',
-        'data' => $responseData
-    ]);
-}
-
+    {
+        $validated = $request->validate([
+            'country_id' => 'required|exists:countries,id',
+        ]);
+        $countryId = $validated['country_id'];
+        $specialities = Provider::where('nationality', $countryId)->get();
+        $responseData = $specialities->map(function ($speciality) {
+            return [
+                'id' => $speciality->id,
+                'speciality_name' => $speciality->speciality_name,
+                'speciality_image' => Storage::url($speciality->speciality_image),
+            ];
+        });
+        return response()->json([
+            'status' => 'success',
+            'data' => $responseData
+        ]);
+    }
 }

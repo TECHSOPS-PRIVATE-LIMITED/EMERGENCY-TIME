@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\SpecialityController;
+use App\Http\Controllers\FeedbackController;
 
 Route::get('/user', function (Request $request) {
          return $request->user();
@@ -18,3 +19,5 @@ Route::get('/countrieslist', [CountriesController::class, 'countryapi'])->middle
 Route::get('/specialitieslist', [SpecialityController::class, 'getSpecialities'])->middleware('auth:sanctum');
 // Providers API's
 Route::get('/get-providers', [ProviderController::class, 'getProviders'])->middleware('auth:sanctum');
+// Feed Back API
+Route::post('/feedback', [FeedbackController::class, 'storeFeedback'])->middleware('auth:sanctum');

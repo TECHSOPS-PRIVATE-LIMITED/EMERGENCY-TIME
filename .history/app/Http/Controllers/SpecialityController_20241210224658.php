@@ -70,7 +70,7 @@ class SpecialityController extends Controller
             return [
                 'id' => $speciality->id,
                 'speciality_name' => $speciality->speciality_name,
-                'speciality_image' => $speciality->speciality_image ? asset('storage/' . $speciality->speciality_image) : null,
+                'speciality_image' => $speciality->speciality_image ? asset('storage/' . $speciality->image) : null,
             ];
         });
         return response()->json([

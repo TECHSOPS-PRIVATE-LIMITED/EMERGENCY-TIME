@@ -40,7 +40,6 @@ class SpecialityController extends Controller
         $request->validate([
             'speciality_name' => 'required|string|max:255',
             'country_id' => 'required|exists:countries,id', 
-            'speciality_image' => 'required'
         ]);
 
         $speciality = Speciality::findOrFail($speciality);

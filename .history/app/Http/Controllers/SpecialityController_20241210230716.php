@@ -46,8 +46,8 @@ class SpecialityController extends Controller
         $speciality->speciality_name = $request->input('speciality_name');
         $speciality->country_id = $request->input('country_id'); 
         if ($request->hasFile('speciality_image')) {
-        if ($speciality->speciality_image && Storage::disk('public')->exists($speciality->speciality_image)) {
-            Storage::disk('public')->delete($speciality->speciality_image);
+        if ($speciality->speciality_image && \Storage::disk('public')->exists($speciality->speciality_image)) {
+            \Storage::disk('public')->delete($speciality->speciality_image);
         }
         $imagePath = $request->file('speciality_image')->store('specialities', 'public');
         $speciality->speciality_image = $imagePath;

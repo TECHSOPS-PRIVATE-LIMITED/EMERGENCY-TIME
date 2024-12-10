@@ -45,10 +45,14 @@ class SpecialityController extends Controller
         $speciality = Speciality::findOrFail($speciality);
         $speciality->speciality_name = $request->input('speciality_name');
         $speciality->country_id = $request->input('country_id'); 
-        if ($request->hasFile('speciality_image')) {
+         // Check if a new image is uploaded
+    if ($request->hasFile('speciality_image')) {
+        // Delete the old image if it exists
         if ($speciality->speciality_image && Storage::disk('public')->exists($speciality->speciality_image)) {
             Storage::disk('public')->delete($speciality->speciality_image);
         }
+
+        // Store the new image
         $imagePath = $request->file('speciality_image')->store('specialities', 'public');
         $speciality->speciality_image = $imagePath;
     }

@@ -70,10 +70,14 @@ class SpecialityController extends Controller
     public function getSpecialities(Request $request)
     {
         $validated = $request->validate([
-            'country_id' => 'required|exists:countries,id',
+            'country_id' => 'nullable|exists:countries,id', 
         ]);
-        $countryId = $validated['country_id'];
-        $specialities = Speciality::where('country_id', $countryId)->get();
+        $countryId = $validated['country_id'] ?? null; 
+        $specialitiesQuery = Speciality::query();
+        if ($countryId) {
+            $specialitiesQuery->where('country_id', $countryId);
+        }
+        $specialities = $specialitiesQuery->get();
         $responseData = $specialities->map(function ($speciality) {
             return [
                 'id' => $speciality->id,

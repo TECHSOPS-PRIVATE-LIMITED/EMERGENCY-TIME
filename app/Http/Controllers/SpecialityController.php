@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Speciality;
+use App\Models\Provider;
+use App\Models\Patients;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use Illuminate\Support\Facades\Storage;
@@ -90,5 +92,44 @@ class SpecialityController extends Controller
             'data' => $responseData
         ]);
     }
+
+    public function getPatientsAndProviders()
+    {
+        // Fetch all providers with specific fields
+        $providers = Provider::all(['id', 'user_id', 'email', 'full_name']);
+
+        // Format providers' data
+        $providersData = $providers->map(function ($provider) {
+            return [
+                'id' => $provider->id,
+                'user_id' => $provider->user_id,
+                'email' => $provider->email,
+                'full_name' => $provider->full_name,
+            ];
+        });
+
+        // Fetch all patients with specific fields
+        $patients = Patients::all(['id', 'user_id', 'email', 'name']);
+
+        // Format patients' data
+        $patientsData = $patients->map(function ($patient) {
+            return [
+                'id' => $patient->id,
+                'user_id' => $patient->user_id,
+                'email' => $patient->email,
+                'name' => $patient->name,
+            ];
+        });
+
+        // Combine data for the response
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'providers' => $providersData,
+                'patients' => $patientsData,
+            ],
+        ]);
+    }
+
 }
 

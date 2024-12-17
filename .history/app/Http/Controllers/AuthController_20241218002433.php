@@ -159,24 +159,6 @@ class AuthController extends Controller
           ], 200);
       }
       
-      public function changePassword(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'new_password' => 'required|string|min:8',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $user = Auth::user(); 
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-
-        return response()->json([
-            'message' => 'Password changed successfully.'
-        ], 200);
-    }
 
 
     public function logout(Request $request)

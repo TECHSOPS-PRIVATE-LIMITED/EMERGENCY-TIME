@@ -171,7 +171,7 @@ class AuthController extends Controller
 
         $user = Auth::user(); 
         $user->password = Hash::make($request->new_password);
-        $user->save();
+        $user->update();
 
         return response()->json([
             'message' => 'Password changed successfully.'

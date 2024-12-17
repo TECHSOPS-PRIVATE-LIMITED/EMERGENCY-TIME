@@ -15,7 +15,7 @@ Route::get('/user', function (Request $request) {
 Route::post('registerApi', [AuthController::class, 'registerApi']);
 Route::post('loginApi', [AuthController::class, 'loginApi']);
 
-Route::post('/change-password', [AuthController::class, 'changePassword'])->middleware('auth:sanctum');
+Route::get('/change-password', [AuthController::class, 'changePassword'])->middleware('auth:sanctum');
 // Countries API's
 Route::get('/countrieslist', [CountriesController::class, 'countryapi'])->middleware('auth:sanctum');
 // Speciallities API's
@@ -29,5 +29,3 @@ Route::get('/patients-providers', [SpecialityController::class, 'getPatientsAndP
 Route::post('/appointments', [AppointmentController::class, 'storeAppointments'])->middleware('auth:sanctum');
 
 Route::get('/my-appointments', [AppointmentController::class, 'getAppointments'])->middleware('auth:sanctum');
-
-Route::get('/replicate-token', [FeedbackController::class, 'sendReplicateToken'])->middleware('auth:sanctum');

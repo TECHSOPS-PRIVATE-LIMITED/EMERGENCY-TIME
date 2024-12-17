@@ -137,12 +137,16 @@ class AppointmentController extends Controller
                 'message' => 'Patient record not found for the authenticated user.',
             ], 404);
         }
+
+        // Get upcoming appointments with provider details
         $upcomingAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
             ->where('patient_id', $patient->id)
             ->where('date', '>=', now()->toDateString())
             ->orderBy('date', 'asc')
             ->orderBy('time', 'asc')
             ->get();
+
+        // Get past appointments with provider details
         $pastAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
             ->where('patient_id', $patient->id)
             ->where('date', '<', now()->toDateString())

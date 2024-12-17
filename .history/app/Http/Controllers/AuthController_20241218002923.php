@@ -168,9 +168,10 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
+        $user = Auth::user();
 
-        $user = Auth::user(); 
-        $user->password = Hash::make($request->new_password);
+        // Update the password
+        $user->password = Hash::make($request->new_password); // Hash the new password
         $user->save();
 
         return response()->json([

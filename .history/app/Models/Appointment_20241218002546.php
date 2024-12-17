@@ -13,7 +13,7 @@ class Appointment extends Model
 
     public function provider()
     {
-        return $this->belongsTo(Provider::class,'provider_id');
+        return $this->belongsTo(Providers::class,'provider_id');
     }
 
 }

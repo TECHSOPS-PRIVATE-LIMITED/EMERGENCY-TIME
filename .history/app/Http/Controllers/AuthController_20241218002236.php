@@ -121,11 +121,14 @@ class AuthController extends Controller
               'password' => Hash::make($request->password),
           ]);
 
+           // Create the patient record
             $patient = Patients::create([
-                'name' => $request->name,
+                'name' => $request->name, // You can customize the fields as needed
                 'email' => $request->email,
-                'user_id' => $user->id,
+                'user_id' => $user->id, // Linking the patient to the user
             ]);
+  
+          // Create a token for the user
           $token = $user->createToken('authToken')->plainTextToken;
   
           return response()->json([
@@ -136,45 +139,24 @@ class AuthController extends Controller
       }
   
       public function loginApi(Request $request)
-      {
-          $validator = Validator::make($request->all(), [
-              'email' => 'required|email',
-              'password' => 'required',
-          ]);
-      
-          if ($validator->fails()) {
-              return response()->json(['errors' => $validator->errors()], 422);
-          }
-      
-          if (!Auth::attempt($request->only('email', 'password'))) {
-              return response()->json(['message' => 'Invalid login credentials'], 401);
-          }
-      
-          $user = Auth::user();
-          $token = $user->createToken('token-name')->plainTextToken;
-      
-          return response()->json([
-              'name' => $user->name,
-              'token' => $token
-          ], 200);
-      }
-      
-      public function changePassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_password' => 'required|string|min:8',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(['message' => 'Invalid login credentials'], 401);
+        }
 
-        $user = Auth::user(); 
-        $user->password = Hash::make($request->new_password);
-        $user->save();
+        $user = Auth::user();
+        $token = $user->createToken('token-name')->plainTextToken;
 
         return response()->json([
-            'message' => 'Password changed successfully.'
+            'plainTextToken' => $token
         ], 200);
     }
 

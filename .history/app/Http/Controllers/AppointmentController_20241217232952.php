@@ -7,7 +7,6 @@ use App\Models\Patients;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class AppointmentController extends Controller
 {
@@ -107,96 +106,21 @@ class AppointmentController extends Controller
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
         ]);
+
+        // Create the appointment with the patient_id included
         $appointment = Appointment::create([
             'patient_id' => $patient->id,
             'provider_id' => $validatedData['provider_id'],
             'date' => $validatedData['date'],
             'time' => $validatedData['time'],
         ]);
+
+        // Return the response
         return response()->json([
             'success' => true,
             'message' => 'Appointment created successfully',
             'data' => $appointment,
         ], 201);
     }
-
-    public function getAppointments(Request $request)
-    {
-        if (!Auth::check()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User not authenticated.',
-            ], 401);
-        }
-
-        $patient = Patients::where('user_id', Auth::id())->first();
-
-        if (!$patient) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Patient record not found for the authenticated user.',
-            ], 404);
-        }
-
-        // Get upcoming appointments with provider details
-        $upcomingAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
-            ->where('date', '>=', now()->toDateString())
-            ->orderBy('date', 'asc')
-            ->orderBy('time', 'asc')
-            ->get();
-
-        // Get past appointments with provider details
-        $pastAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
-            ->where('date', '<', now()->toDateString())
-            ->orderBy('date', 'desc')
-            ->orderBy('time', 'desc')
-            ->get();
-
-        // Map through appointments and add provider details
-        $upcomingAppointments = $upcomingAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; // Get the provider of the appointment
-
-            return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
-            ];
-        });
-
-        $pastAppointments = $pastAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; // Get the provider of the appointment
-
-            return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
-            ];
-        });
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Appointments retrieved successfully.',
-            'data' => [
-                'upcoming' => $upcomingAppointments,
-                'past' => $pastAppointments,
-            ],
-        ], 200);
-    }
-
-
 
 }

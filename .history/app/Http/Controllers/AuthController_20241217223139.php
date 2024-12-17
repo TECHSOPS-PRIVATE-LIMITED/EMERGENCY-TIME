@@ -137,7 +137,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
+       
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
@@ -145,14 +145,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid login credentials'], 401);
         }
 
-        $user = Auth::user();
-        $token = $user->createToken('token-name')->plainTextToken;
+            $token = $user->createToken('token-name');
 
         return response()->json([
-            'plainTextToken' => $token
+            'message' => 'Login successful',
+            'token' => $token
         ], 200);
     }
-
 
     public function logout(Request $request)
     {

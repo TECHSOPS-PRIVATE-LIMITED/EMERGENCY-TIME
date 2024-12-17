@@ -148,7 +148,7 @@ class ProviderController extends Controller
             ->get();
 
         // Get past appointments with provider details
-        $pastAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
+        $pastAppointments = Appointments::with(['provider.speciality']) // Eager load provider and speciality
             ->where('patient_id', $patient->id)
             ->where('date', '<', now()->toDateString())
             ->orderBy('date', 'desc')

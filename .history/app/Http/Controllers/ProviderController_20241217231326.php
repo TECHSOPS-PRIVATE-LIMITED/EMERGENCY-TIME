@@ -121,78 +121,46 @@ class ProviderController extends Controller
 
         return redirect()->route('providers.index')->with('success', 'Provider deleted successfully.');
     }
-    public function getAppointments(Request $request)
+    public function getProviders(Request $request)
     {
-        if (!Auth::check()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User not authenticated.',
-            ], 401);
+        $validated = $request->validate([
+            'country_id' => 'nullable|exists:countries,id',
+            'speciallity_id' => 'nullable|exists:specialities,id',
+            'sort_price' => 'nullable|in:low_to_high,high_to_low', 
+        ]);
+        $countryId = $validated['country_id'] ?? null;
+        $speciallityId = $validated['speciallity_id'] ?? null;
+        $sortPrice = $validated['sort_price'] ?? null; 
+        $providersQuery = Provider::with('speciality');
+        if ($countryId) {
+            $providersQuery->where('nationality', $countryId);
         }
-
-        $patient = Patients::where('user_id', Auth::id())->first();
-
-        if (!$patient) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Patient record not found for the authenticated user.',
-            ], 404);
+        if ($speciallityId) {
+            $providersQuery->where('speciality_id', $speciallityId);
         }
-
-        // Get upcoming appointments with provider details
-        $upcomingAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
-            ->where('date', '>=', now()->toDateString())
-            ->orderBy('date', 'asc')
-            ->orderBy('time', 'asc')
-            ->get();
-
-        // Get past appointments with provider details
-        $pastAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
-            ->where('date', '<', now()->toDateString())
-            ->orderBy('date', 'desc')
-            ->orderBy('time', 'desc')
-            ->get();
-        $upcomingAppointments = $upcomingAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; 
-
+        if ($sortPrice) {
+            if ($sortPrice === 'low_to_high') {
+                $providersQuery->orderBy('consultation_fee', 'asc');
+            } elseif ($sortPrice === 'high_to_low') {
+                $providersQuery->orderBy('consultation_fee', 'desc');
+            }
+        }
+        $providers = $providersQuery->get();
+        $responseData = $providers->map(function ($provider) {
             return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
+                'id' => $provider->id,
+                'full_name' => $provider->full_name,
+                'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
+                'speciality' => $provider->speciality->speciality_name ?? null,
+                'experience_years' => $provider->experience_years,
+                'consultation_fee' => $provider->consultation_fee,
+                'consultation_days' => $provider->consultation_days,
+                'consultation_hours' => $provider->consultation_hours,
             ];
         });
-
-        $pastAppointments = $pastAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; 
-            return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
-            ];
-        });
-
         return response()->json([
-            'success' => true,
-            'message' => 'Appointments retrieved successfully.',
-            'data' => [
-                'upcoming' => $upcomingAppointments,
-                'past' => $pastAppointments,
-            ],
-        ], 200);
+            'status' => 'success',
+            'data' => $responseData,
+        ]);
     }
-
 }

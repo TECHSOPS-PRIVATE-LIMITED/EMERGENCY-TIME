@@ -97,7 +97,7 @@ class CountriesController extends Controller
                 'id' => $country->id,
                 'country_code' => $country->country_code,
                 'country_name' => $country->country_name,
-                'image_url' => $country->image ? url(Storage::url($country->image)) : null,
+                'image_url' => $country->image ? Storage::url($country->image) : null,
                 'created_at' => $country->created_at,
                 'updated_at' => $country->updated_at,
             ];

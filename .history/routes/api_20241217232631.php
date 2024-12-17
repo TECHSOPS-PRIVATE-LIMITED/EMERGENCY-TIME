@@ -25,5 +25,3 @@ Route::post('/feedback', [FeedbackController::class, 'storeFeedback'])->middlewa
 Route::get('/patients-providers', [SpecialityController::class, 'getPatientsAndProviders'])->middleware('auth:sanctum');
 
 Route::post('/appointments', [AppointmentController::class, 'storeAppointments'])->middleware('auth:sanctum');
-
-Route::get('/my-appointments', [AppointmentController::class, 'getAppointments'])->middleware('auth:sanctum');

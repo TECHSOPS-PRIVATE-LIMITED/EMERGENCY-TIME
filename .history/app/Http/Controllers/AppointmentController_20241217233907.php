@@ -7,7 +7,6 @@ use App\Models\Patients;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class AppointmentController extends Controller
 {
@@ -122,6 +121,7 @@ class AppointmentController extends Controller
 
     public function getAppointments(Request $request)
     {
+        // Check if the user is authenticated
         if (!Auth::check()) {
             return response()->json([
                 'success' => false,
@@ -129,8 +129,10 @@ class AppointmentController extends Controller
             ], 401);
         }
 
+        // Fetch the patient record for the authenticated user
         $patient = Patients::where('user_id', Auth::id())->first();
 
+        // Check if the patient record exists
         if (!$patient) {
             return response()->json([
                 'success' => false,
@@ -138,55 +140,21 @@ class AppointmentController extends Controller
             ], 404);
         }
 
-        // Get upcoming appointments with provider details
-        $upcomingAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
+        // Get upcoming appointments for the patient (appointments on or after today)
+        $upcomingAppointments = Appointment::where('patient_id', $patient->id)
             ->where('date', '>=', now()->toDateString())
             ->orderBy('date', 'asc')
             ->orderBy('time', 'asc')
             ->get();
 
-        // Get past appointments with provider details
-        $pastAppointments = Appointment::with(['provider.speciality']) // Eager load provider and speciality
-            ->where('patient_id', $patient->id)
+        // Get past appointments for the patient (appointments before today)
+        $pastAppointments = Appointment::where('patient_id', $patient->id)
             ->where('date', '<', now()->toDateString())
             ->orderBy('date', 'desc')
             ->orderBy('time', 'desc')
             ->get();
 
-        // Map through appointments and add provider details
-        $upcomingAppointments = $upcomingAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; // Get the provider of the appointment
-
-            return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
-            ];
-        });
-
-        $pastAppointments = $pastAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; // Get the provider of the appointment
-
-            return [
-                'id' => $appointment->id,
-                'date' => $appointment->date,
-                'time' => $appointment->time,
-                'provider' => [
-                    'full_name' => $provider->full_name,
-                    'profile_picture' => $provider->profile_picture ? Storage::url($provider->profile_picture) : null,
-                    'speciality' => $provider->speciality->speciality_name ?? null,
-                    'experience_years' => $provider->experience_years,
-                ],
-            ];
-        });
-
+        // Return the response with both upcoming and past appointments
         return response()->json([
             'success' => true,
             'message' => 'Appointments retrieved successfully.',

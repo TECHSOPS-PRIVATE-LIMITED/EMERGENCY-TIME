@@ -26,4 +26,4 @@ Route::get('/patients-providers', [SpecialityController::class, 'getPatientsAndP
 
 Route::post('/appointments', [AppointmentController::class, 'storeAppointments'])->middleware('auth:sanctum');
 
-Route::get('/my-appointments', [AppointmentController::class, 'getAppointments'])->middleware('auth:sanctum');
+Route::get('/my-appointments', [AppointmentController::class, 'getUpcomingAppointments'])->middleware('auth:sanctum');

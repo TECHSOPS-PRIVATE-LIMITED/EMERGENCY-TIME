@@ -154,8 +154,10 @@ class ProviderController extends Controller
             ->orderBy('date', 'desc')
             ->orderBy('time', 'desc')
             ->get();
+
+        // Map through appointments and add provider details
         $upcomingAppointments = $upcomingAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; 
+            $provider = $appointment->provider; // Get the provider of the appointment
 
             return [
                 'id' => $appointment->id,
@@ -171,7 +173,8 @@ class ProviderController extends Controller
         });
 
         $pastAppointments = $pastAppointments->map(function ($appointment) {
-            $provider = $appointment->provider; 
+            $provider = $appointment->provider; // Get the provider of the appointment
+
             return [
                 'id' => $appointment->id,
                 'date' => $appointment->date,

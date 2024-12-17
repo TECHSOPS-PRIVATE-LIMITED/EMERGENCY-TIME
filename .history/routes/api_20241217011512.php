@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountriesController;
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\FeedbackController;

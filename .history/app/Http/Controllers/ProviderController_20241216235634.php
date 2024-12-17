@@ -123,21 +123,34 @@ class ProviderController extends Controller
     }
     public function getProviders(Request $request)
     {
+       
         $validated = $request->validate([
-            'country_id' => 'nullable|exists:countries,id',
-            'speciallity_id' => 'nullable|exists:specialities,id',
-            'sort_price' => 'nullable|in:low_to_high,high_to_low', 
+            'country_id' => 'required|exists:countries,id',
+            'speciallity_id' => 'required|exists:specialities,id',
+            'sort_price' => 'required|in:low_to_high,high_to_low', // Add validation for sorting
         ]);
+
         $countryId = $validated['country_id'] ?? null;
         $speciallityId = $validated['speciallity_id'] ?? null;
-        $sortPrice = $validated['sort_price'] ?? null; 
+        $sortPrice = $validated['sort_price'] ?? null; // Get sorting preference
+
+        
+        
         $providersQuery = Provider::with('speciality');
+
+
+
+        // Filter by country
         if ($countryId) {
             $providersQuery->where('nationality', $countryId);
         }
+
+        // Filter by speciality
         if ($speciallityId) {
             $providersQuery->where('speciality_id', $speciallityId);
         }
+
+        // Handle sorting
         if ($sortPrice) {
             if ($sortPrice === 'low_to_high') {
                 $providersQuery->orderBy('consultation_fee', 'asc');
@@ -145,7 +158,10 @@ class ProviderController extends Controller
                 $providersQuery->orderBy('consultation_fee', 'desc');
             }
         }
+
         $providers = $providersQuery->get();
+
+        // Map response data
         $responseData = $providers->map(function ($provider) {
             return [
                 'id' => $provider->id,
@@ -160,9 +176,12 @@ class ProviderController extends Controller
                 'consultation_hours' => $provider->consultation_hours,
             ];
         });
+
         return response()->json([
             'status' => 'success',
             'data' => $responseData,
         ]);
     }
+
+
 }

@@ -128,6 +128,7 @@ class ProviderController extends Controller
             'speciallity_id' => 'nullable|exists:specialities,id',
             'sort_price' => 'nullable|in:low_to_high,high_to_low', 
         ]);
+
         $countryId = $validated['country_id'] ?? null;
         $speciallityId = $validated['speciallity_id'] ?? null;
         $sortPrice = $validated['sort_price'] ?? null; 
@@ -160,9 +161,12 @@ class ProviderController extends Controller
                 'consultation_hours' => $provider->consultation_hours,
             ];
         });
+
         return response()->json([
             'status' => 'success',
             'data' => $responseData,
         ]);
     }
+
+
 }

@@ -123,27 +123,18 @@ class ProviderController extends Controller
     }
     public function getProviders(Request $request)
     {
+    
         $validated = $request->validate([
-            'country_id' => 'nullable|exists:countries,id',
-            'speciallity_id' => 'nullable|exists:specialities,id',
-            'sort_price' => 'nullable|in:low_to_high,high_to_low', 
+            'country_id' => 'nullable|exists:countries,id', 
         ]);
         $countryId = $validated['country_id'] ?? null;
         $speciallityId = $validated['speciallity_id'] ?? null;
-        $sortPrice = $validated['sort_price'] ?? null; 
-        $providersQuery = Provider::with('speciality');
+        $providersQuery = Provider::with('speciality'); 
         if ($countryId) {
             $providersQuery->where('nationality', $countryId);
         }
-        if ($speciallityId) {
-            $providersQuery->where('speciality_id', $speciallityId);
-        }
-        if ($sortPrice) {
-            if ($sortPrice === 'low_to_high') {
-                $providersQuery->orderBy('consultation_fee', 'asc');
-            } elseif ($sortPrice === 'high_to_low') {
-                $providersQuery->orderBy('consultation_fee', 'desc');
-            }
+        if($speciallityId) {
+            $providersQuery->where('speciality_id ', $speciallityId);
         }
         $providers = $providersQuery->get();
         $responseData = $providers->map(function ($provider) {
@@ -165,4 +156,5 @@ class ProviderController extends Controller
             'data' => $responseData,
         ]);
     }
+
 }

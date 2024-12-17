@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountriesController;
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\FeedbackController;
@@ -23,5 +22,3 @@ Route::get('/get-providers', [ProviderController::class, 'getProviders'])->middl
 // Feed Back API
 Route::post('/feedback', [FeedbackController::class, 'storeFeedback'])->middleware('auth:sanctum');
 Route::get('/patients-providers', [SpecialityController::class, 'getPatientsAndProviders'])->middleware('auth:sanctum');
-
-Route::post('/appointments', [AppointmentController::class, 'storeAppointments']);

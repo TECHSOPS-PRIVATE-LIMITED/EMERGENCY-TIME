@@ -26,18 +26,16 @@
                         <li><a class="nav-item" href="#pricing">Pricing</a></li>
                         <li><a class="nav-item" href="#testimonial">Testimonial</a></li>
                         <li><a class="nav-item" href="#contacts">Contact Us</a></li>
-                        
+                        @auth
                             <li>
                                 <a class="nav-item" style="padding: 10px; background-color:black; border-radius:5px; color:white;" href="{{ route('login') }}">
                                     {{ __('Register/Login') }}</a>
                             </li>
-                       
-                        
+                        @endauth
                         <li>
                                 <a class="nav-item" style="padding: 10px; background-color:black; border-radius:5px; color:white;" href="{{ route('providerregisteration') }}">
                                     {{ __('Apply for Provider') }}</a>
                         </li>
-                      
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->

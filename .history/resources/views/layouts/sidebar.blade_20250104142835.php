@@ -19,7 +19,7 @@
                   <h6 class="f-w-600">Dashboard </h6></a>
               </li>
               
-              <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
                   </svg>
@@ -28,7 +28,7 @@
                   <li> <a href="{{ route('plans.index')}}">All Plans</a></li>
                   <li> <a href="{{ route('plans.create') }}">Create Plan</a></li>
                 </ul>
-              </li> -->
+              </li>
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="{{ route('specialities.index') }}">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>

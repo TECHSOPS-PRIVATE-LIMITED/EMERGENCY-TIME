@@ -32,12 +32,12 @@
                                     {{ __('Register/Login') }}</a>
                             </li>
                        
-                        
+                        @auth
                         <li>
                                 <a class="nav-item" style="padding: 10px; background-color:black; border-radius:5px; color:white;" href="{{ route('providerregisteration') }}">
                                     {{ __('Apply for Provider') }}</a>
                         </li>
-                      
+                        @endauth
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->

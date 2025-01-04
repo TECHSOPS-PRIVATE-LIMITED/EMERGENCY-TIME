@@ -19,7 +19,6 @@ return new class extends Migration
             $table->time('time');
             $table->string('approved')->nullable();
             $table->string('medium')->nullable();
-            $table->string('review')->nullable();
             $table->timestamps();
         });
     }

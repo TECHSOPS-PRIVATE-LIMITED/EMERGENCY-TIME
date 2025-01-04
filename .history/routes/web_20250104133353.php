@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PlanController;
@@ -44,14 +43,15 @@ Route::resource('providers', ProviderController::class);
 // PAITIENTS ROUTES
 Route::resource('patients', PatientsController::class);
 
-Route::resource('appointments', AppointmentController::class);
-
-Route::post('/appointment-approval/{id}', [AppointmentController::class, 'approval'])->name('appointment.approval');
+// PAITIENTS ROUTES
+Route::resource('appointments', PatientsController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboards.dashboard');
 })->name('dashboard');
 
+
+//CLIENT SIDE ROUTES
 
 Route::get('/clientside/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::get('/clientside/index', [ClientController::class, 'index'])->name('client.index');

@@ -46,8 +46,6 @@ Route::resource('patients', PatientsController::class);
 
 Route::resource('appointments', AppointmentController::class);
 
-Route::post('/appointment-approval/{id}', [AppointmentController::class, 'approval'])->name('appointment.approval');
-
 Route::get('/dashboard', function () {
     return view('dashboards.dashboard');
 })->name('dashboard');

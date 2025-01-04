@@ -50,12 +50,10 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Appointment $appointment)
     {
-        $appointment = Appointment::findOrFail($id);
-        return view('appointment.approval', compact('appointment'));
+        return view('appointments.show', compact('appointment'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -195,25 +193,6 @@ class AppointmentController extends Controller
         ], 200);
     }
 
-    public function approval(Request $request, $id)
-    {
-        // Find the appointment by its ID
-        $appointment = Appointment::findOrFail($id);
-    
-        // Validate the input (make sure the link is provided)
-        $request->validate([
-            'video_session_input' => 'required|url', // Ensure it's a valid URL
-        ]);
-    
-        // Update the appointment's medium and set the approval status to 1
-        $appointment->update([
-            'medium' => $request->video_session_input, // Save the video session link
-            'approved' => 1, // Mark the appointment as approved
-        ]);
-    
-        // Optionally, you can redirect the user back with a success message
-        return redirect()->route('appointments.index')->with('success', 'Appointment has been approved with video session link.');
-    }
-    
+
 
 }

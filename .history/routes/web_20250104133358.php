@@ -44,14 +44,15 @@ Route::resource('providers', ProviderController::class);
 // PAITIENTS ROUTES
 Route::resource('patients', PatientsController::class);
 
+// PAITIENTS ROUTES
 Route::resource('appointments', AppointmentController::class);
-
-Route::post('/appointment-approval/{id}', [AppointmentController::class, 'approval'])->name('appointment.approval');
 
 Route::get('/dashboard', function () {
     return view('dashboards.dashboard');
 })->name('dashboard');
 
+
+//CLIENT SIDE ROUTES
 
 Route::get('/clientside/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::get('/clientside/index', [ClientController::class, 'index'])->name('client.index');

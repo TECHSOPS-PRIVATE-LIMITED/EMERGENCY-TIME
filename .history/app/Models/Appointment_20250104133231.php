@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     protected $table = 'appointment';
-    protected $fillable = ['patient_id', 'provider_id', 'date','time','medium','approved','review' ];
+    protected $fillable = ['patient_id', 'provider_id', 'date','time' ];
     
 
 
@@ -18,7 +18,7 @@ class Appointment extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Patients::class,'patient_id');
+        return $this->belongsTo(Patients::class,'provider_id');
     }
 
 }

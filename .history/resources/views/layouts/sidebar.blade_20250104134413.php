@@ -19,7 +19,7 @@
                   <h6 class="f-w-600">Dashboard </h6></a>
               </li>
               
-              <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
                   </svg>
@@ -28,7 +28,7 @@
                   <li> <a href="{{ route('plans.index')}}">All Plans</a></li>
                   <li> <a href="{{ route('plans.create') }}">Create Plan</a></li>
                 </ul>
-              </li> -->
+              </li>
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="{{ route('specialities.index') }}">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
@@ -57,15 +57,18 @@
               
             
 
-              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="{{ route('appointments.index') }}">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
-                    <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
+                    <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
                   </svg>
-                  <h6 class="f-w-600">Appointments </h6></a>
+                  <h6 class="f-w-600">Appointments</h6><i class="iconly-Arrow-Right-2 icli"></i></a>
+                <ul class="sidebar-submenu">
+                  <li> <a href="{{ route('appointments.index') }}">Appointments</a></li>
+                  <li> <a href="projectcreate.html">Add Appointments</a></li>
+                </ul>
               </li>
-             
 
-              <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
                   </svg>
@@ -74,7 +77,7 @@
                   <li> <a href="project-list.html">Transactions</a></li>
                   <li> <a href="projectcreate.html">Providers Payout</a></li>
                 </ul>
-              </li> -->
+              </li>
 
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">

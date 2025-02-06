@@ -56,7 +56,7 @@ class AuthController extends Controller
         $patient->profile_status = 0; 
         $patient->save();
         Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Account created successfully!');
+        return redirect()->route('provider.success')->with('success', 'Account created successfully!');
     }
 
     public function login(Request $request)

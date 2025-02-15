@@ -1,6 +1,6 @@
-@extends('layouts.app')  
+@extends('layouts.app')
 
-@section('content') 
+@section('content')
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
@@ -103,5 +103,5 @@
             </form>
         </div>
     </div>
-</div> 
+</div>
 @endsection

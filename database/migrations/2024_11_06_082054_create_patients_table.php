@@ -14,15 +14,24 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('image');
-            $table->string('name');
-            $table->string('date_of_birth');
-            $table->string('email');
-            $table->string('city');
-            $table->string('country');
-            $table->string('birth_place');
-            $table->string('identity_no');
-            $table->string('profile_status');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('father_name')->nullable();
+            $table->string('profile_pic');
+            $table->enum('gender', ['male', 'female', 'other']);
+            $table->date('dob');
+            $table->string('blood_group')->nullable();
+            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->nullable();
+            $table->string('cnic')->unique()->nullable();
+            $table->string('phone');
+            $table->string('email')->nullable()->unique();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
+            $table->string('country')->default('pakistan');
+            $table->text('allergies')->nullable();
+            $table->text('current_medications')->nullable();
+            $table->text('chronic_diseases')->nullable();
             $table->timestamps();
         });
     }

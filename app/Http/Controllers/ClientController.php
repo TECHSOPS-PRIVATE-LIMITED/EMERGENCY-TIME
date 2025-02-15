@@ -18,7 +18,7 @@ class ClientController extends Controller
     }
     public function profile()
     {
-        $patients = Patients::where('user_id', Auth::user()->id)->first(); 
+        $patients = Patients::where('user_id', Auth::user()->id)->first();
         return view('clientside.profile', compact('patients'));
 
     }

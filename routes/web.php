@@ -23,7 +23,7 @@ Route::post('/password/reset/request', [AuthController::class, 'sendOtp'])->name
 Route::post('/password/reset/verify', [AuthController::class, 'verifyOtp'])->name('password.reset.verify');
 
 
-// HOME SITE ROUTES 
+// HOME SITE ROUTES
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/providerregisteration', [HomeController::class, 'providerregisteration'])->name('providerregisteration');

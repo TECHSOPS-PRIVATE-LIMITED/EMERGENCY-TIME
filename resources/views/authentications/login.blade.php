@@ -52,7 +52,7 @@
     <!-- login page start-->
     <div class="container-fluid p-0">
         <div class="row m-0">
-            <div class="col-12 p-0">    
+            <div class="col-12 p-0">
             <div class="login-card login-dark">
 
             <div>
@@ -63,7 +63,7 @@
                         </a>
                     </div>
 
-                        <div class="login-main"> 
+                        <div class="login-main">
                             <form class="theme-form" action="{{ route('login') }}" method="POST">
                                 @csrf
                                 <h2 class="text-center">Sign in to account</h2>

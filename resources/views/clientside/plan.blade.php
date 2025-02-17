@@ -2,7 +2,7 @@
 @section('clientside')
 <div class="tab-pane fade show active" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
     <div class="row">
-       
+
         <div class="col-xxl-4 col-md-6">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 @endsection

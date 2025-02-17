@@ -1,24 +1,24 @@
 <!-- Page sidebar start-->
 
-<aside class="page-sidebar"> 
+<aside class="page-sidebar">
           <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
           <div class="main-sidebar" id="main-sidebar">
             <ul class="sidebar-menu" id="simple-bar">
-            
+
             <li class="sidebar-main-title">
                 <div>
                   <h5 class="f-w-700 sidebar-title pt-3">ADMIN MENU</h5>
                 </div>
               </li>
-        
-             
+
+
                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="file-manager.html">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
                   </svg>
                   <h6 class="f-w-600">Dashboard </h6></a>
               </li>
-              
+
               <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
                     <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
@@ -35,7 +35,7 @@
                   </svg>
                   <h6 class="f-w-600">Specialities </h6></a>
               </li>
-             
+
 
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
@@ -54,8 +54,8 @@
                   </svg>
                   <h6 class="f-w-600">Patients </h6></a>
               </li>
-              
-            
+
+
 
               <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="{{ route('appointments.index') }}">
                   <svg class="stroke-icon">
@@ -63,7 +63,7 @@
                   </svg>
                   <h6 class="f-w-600">Appointments </h6></a>
               </li>
-             
+
 
               <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="javascript:void(0)">
                   <svg class="stroke-icon">
@@ -88,8 +88,8 @@
                   <li> <a href="projectcreate.html">Video Conferencing</a></li>
                 </ul>
               </li>
-             
-              
+
+
 
             </ul>
           </div>

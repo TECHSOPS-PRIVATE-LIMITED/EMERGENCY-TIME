@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\SpecialityController;
-use App\Http\Controllers\ProviderController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\SpecialityController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BmiCalculatorController;
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
@@ -46,6 +48,13 @@ Route::resource('patients', PatientsController::class);
 
 Route::resource('appointments', AppointmentController::class);
 
+Route::get('/hospitals', [HospitalController::class, 'getHospitals']);
+// Route::resource('hospitals', HospitalController::class);
+Route::get('/hospitals/map', function () {
+    return view('clientside.hospitals.index');
+})->name('hospitals.index');
+
+
 Route::post('/appointment-approval/{id}', [AppointmentController::class, 'approval'])->name('appointment.approval');
 
 Route::get('/dashboard', function () {
@@ -56,3 +65,7 @@ Route::get('/dashboard', function () {
 Route::get('/clientside/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::get('/clientside/index', [ClientController::class, 'index'])->name('client.index');
 Route::get('/clientside/plan', [ClientController::class, 'plan'])->name('client.plan');
+
+
+Route::get('/bmi-calculator', [BmiCalculatorController::class, 'index'])->name('bmi.index');
+Route::post('/bmi-calculator', [BmiCalculatorController::class, 'calculate'])->name('bmi.calculate');
